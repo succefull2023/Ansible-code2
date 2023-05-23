@@ -1,0 +1,15 @@
+---
+- hosts: qaserver
+  become: yes
+  ignore_errors: yes
+    tasks:
+      - name: Install package
+        package:
+          name: "{{ item }}"
+          state: present
+      with_items:
+        - unzip
+        - wget
+        - httpd
+      - name: download
+        shell: 
